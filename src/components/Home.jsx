@@ -11,8 +11,14 @@ import AnnouncementIcon from '@mui/icons-material/Announcement';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { motion } from 'framer-motion';
-
+import { keyframes } from '@emotion/react';
+const flashingAnimation = keyframes`
+  0% { background-color: #FF5722; }   // Bright orange
+  50% { background-color: #FFC107; }  // Amber
+  100% { background-color: #FF5722; } // Bright orange
+`;
 const Home = () => {
+  
   const { schoolName, introduction, upcomingEvents, importantAnnouncements, aboutUs } = useSelector(selectSchool);
   const [openEvent, setOpenEvent] = useState(null);
   const [openAnnouncement, setOpenAnnouncement] = useState(null);
@@ -74,10 +80,10 @@ const Home = () => {
               <Typography
                 variant="body1"
                 sx={{
-                  fontSize: '1.5rem', // Adjusted text size for readability
+                  fontSize: '1.5rem', 
                   fontWeight: 'bold',
-                  color: '#3e2723', // Dark brown color for text
-                  backgroundColor: "#fbe9e7", // Light warm background
+                  color: '#3e2723', 
+                  backgroundColor: "#fbe9e7", 
                   padding: 2,
                   borderRadius: 1,
                 }}
@@ -101,7 +107,14 @@ const Home = () => {
           <Container sx={{ textAlign: 'center', marginTop: 4 }}>
             <Button
               variant="contained"
-              sx={{ backgroundColor: '#6D4C41', color: '#ffffff' }} // Warm color for button
+              sx={{
+                backgroundColor: '#6D4C41', 
+                color: '#ffffff',
+                animation: `${flashingAnimation} 1.5s infinite`, // Apply flashing effect
+                '&:hover': {
+                  backgroundColor: '#5d4037', // Slightly darker shade on hover
+                },
+              }}
               href="/gallery"
             >
               Show More
@@ -166,7 +179,7 @@ const Home = () => {
                     elevation={3}
                     sx={{
                       padding: 3,
-                      backgroundColor: '#FFF8E1', // Light cream background
+                      backgroundColor: '#FFF8E1', 
                       borderRadius: 2,
                       textAlign: 'center',
                     }}
@@ -187,7 +200,7 @@ const Home = () => {
                             sx={{
                               padding: 2,
                               borderRadius: 1,
-                              backgroundColor: '#FFF9C4', // Light yellow background
+                              backgroundColor: '#FFF9C4', 
                               cursor: 'pointer',
                               textAlign: 'left',
                             }}
@@ -215,7 +228,7 @@ const Home = () => {
                       ))}
 
                       {/* Important Announcements */}
-                      <Typography variant="h6" sx={{ fontWeight: 'bold', marginTop: 4 }}>
+                      {/* <Typography variant="h6" sx={{ fontWeight: 'bold', marginTop: 4 }}>
                         Important Announcements
                       </Typography>
                       {importantAnnouncements.map((announcement) => (
@@ -250,7 +263,7 @@ const Home = () => {
                             </Collapse>
                           </Paper>
                         </Box>
-                      ))}
+                      ))} */}
                     </Box>
                   </Paper>
                 </motion.div>
