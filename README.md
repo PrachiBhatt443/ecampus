@@ -15,8 +15,8 @@ Before you begin, ensure you have met the following requirements:
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/yourusername/springdale-public-school-website.git
-   cd springdale-public-school-website
+   git clone https://github.com/PrachiBhatt443/ecampus.git
+   cd ecampus
 
 2. **Install Dependencies**
       ```bash
