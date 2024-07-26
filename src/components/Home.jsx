@@ -4,24 +4,13 @@ import { Container, Grid, Typography, Paper, Button, Box, Collapse, IconButton }
 import { useSelector } from 'react-redux';
 import { selectSchool } from '../features/schoolSlice';
 import bg from '../img/bg.jpg'; // Ensure the image path is correct
-import { keyframes } from '@emotion/react';
 import CarouselComponent from './CarouselComponent';
 import ContactUs from './ContactUs';
 import EventIcon from '@mui/icons-material/Event';
 import AnnouncementIcon from '@mui/icons-material/Announcement';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
+import { motion } from 'framer-motion';
 
 const Home = () => {
   const { schoolName, introduction, upcomingEvents, importantAnnouncements, aboutUs } = useSelector(selectSchool);
@@ -50,53 +39,65 @@ const Home = () => {
             backgroundColor: '#f1f1f1', // Light background color
           }}
         >
-          <Paper
-            elevation={6}
-            sx={{
-              backgroundColor: 'rgba(255, 255, 255, 0.9)', // Light white with slight transparency
-              marginTop: 4,
-              textAlign: 'center',
-              alignItems: 'center',
-              justifyContent: 'center',
-              animation: `${fadeIn} 2s ease-in-out`,
-              borderRadius: 2,
-              padding: 3,
-            }}
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
           >
-            <Typography
-              variant="h2"
-              gutterBottom
+            <Paper
+              elevation={6}
               sx={{
-                fontSize: '4rem', // Increased text size
-                fontWeight: 'bold',
-                color: 'transparent',
-                background: 'linear-gradient(45deg, #6D4C41 30%, #8D6E63 90%)', // Warm gradient
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                display: 'inline-block',
+                backgroundColor: 'rgba(255, 255, 255, 0.9)', // Light white with slight transparency
+                marginTop: 4,
+                textAlign: 'center',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: 2,
+                padding: 3,
               }}
             >
-              {schoolName}
-            </Typography>
-            <Typography
-              variant="body1"
-              sx={{
-                fontSize: '1.5rem', // Adjusted text size for readability
-                fontWeight: 'bold',
-                color: '#3e2723', // Dark brown color for text
-                backgroundColor: "#fbe9e7", // Light warm background
-                padding: 2,
-                borderRadius: 1,
-              }}
-            >
-              {introduction}
-            </Typography>
-          </Paper>
+              <Typography
+                variant="h2"
+                gutterBottom
+                sx={{
+                  fontSize: '4rem', // Increased text size
+                  fontWeight: 'bold',
+                  color: 'transparent',
+                  background: 'linear-gradient(45deg, #6D4C41 30%, #8D6E63 90%)', // Warm gradient
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  display: 'inline-block',
+                }}
+              >
+                {schoolName}
+              </Typography>
+              <Typography
+                variant="body1"
+                sx={{
+                  fontSize: '1.5rem', // Adjusted text size for readability
+                  fontWeight: 'bold',
+                  color: '#3e2723', // Dark brown color for text
+                  backgroundColor: "#fbe9e7", // Light warm background
+                  padding: 2,
+                  borderRadius: 1,
+                }}
+              >
+                {introduction}
+              </Typography>
+            </Paper>
+          </motion.div>
 
           {/* Carousel with smaller size and relevant images */}
-          <Container sx={{ marginTop: 4, textAlign: 'center' }}>
-            <CarouselComponent />
-          </Container>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1 }}
+          >
+            <Container sx={{ marginTop: 4, textAlign: 'center' }}>
+              <CarouselComponent />
+            </Container>
+          </motion.div>
+
           <Container sx={{ textAlign: 'center', marginTop: 4 }}>
             <Button
               variant="contained"
@@ -112,100 +113,147 @@ const Home = () => {
             <Grid container spacing={4}>
               {/* About Us Brief */}
               <Grid item xs={12} md={6}>
-                <Paper
-                  elevation={3}
-                  sx={{
-                    padding: 3,
-                    backgroundColor: 'rgba(255, 248, 225, 0.5)', 
-                    borderRadius: 2,
-                    textAlign: 'center',
-                  }}
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 1 }}
                 >
-                  <Typography variant="h5" gutterBottom sx={{ color: '#6D4C41', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <EventIcon sx={{ marginRight: 1 }} />
-                    About Us
-                  </Typography>
-                  <Typography variant="body1" paragraph>
-                    {aboutUs.introduction}
-                  </Typography>
-                  <Typography variant="body1" paragraph sx={{ fontWeight: 'bold' }}>
-                    Vision:
-                    <br />
-                    {aboutUs.vision}
-                  </Typography>
-                  <Typography variant="body1" paragraph sx={{ fontWeight: 'bold' }}>
-                    Mission:
-                    <br />
-                    {aboutUs.mission}
-                  </Typography>
-                  <Button
-                    variant="contained"
-                    sx={{ backgroundColor: '#6D4C41', color: '#ffffff' }} // Warm color for button
-                    href="/about"
+                  <Paper
+                    elevation={3}
+                    sx={{
+                      padding: 3,
+                      backgroundColor: 'rgba(255, 248, 225, 0.5)', 
+                      borderRadius: 2,
+                      textAlign: 'center',
+                    }}
                   >
-                    Know More
-                  </Button>
-                </Paper>
+                    <Typography variant="h5" gutterBottom sx={{ color: '#6D4C41', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <EventIcon sx={{ marginRight: 1 }} />
+                      About Us
+                    </Typography>
+                    <Typography variant="body1" paragraph>
+                      {aboutUs.introduction}
+                    </Typography>
+                    <Typography variant="body1" paragraph sx={{ fontWeight: 'bold' }}>
+                      Vision:
+                      <br />
+                      {aboutUs.vision}
+                    </Typography>
+                    <Typography variant="body1" paragraph sx={{ fontWeight: 'bold' }}>
+                      Mission:
+                      <br />
+                      {aboutUs.mission}
+                    </Typography>
+                    <Button
+                      variant="contained"
+                      sx={{ backgroundColor: '#6D4C41', color: '#ffffff' }} // Warm color for button
+                      href="/about"
+                    >
+                      Know More
+                    </Button>
+                  </Paper>
+                </motion.div>
               </Grid>
 
               {/* Upcoming Events & Important Announcements */}
               <Grid item xs={12} md={6}>
-                <Paper
-                  elevation={3}
-                  sx={{
-                    padding: 3,
-                    backgroundColor: '#FFF8E1', // Light cream background
-                    borderRadius: 2,
-                    textAlign: 'center',
-                  }}
+                <motion.div
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 1 }}
                 >
-                  <Typography variant="h5" gutterBottom sx={{ color: '#6D4C41', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <AnnouncementIcon sx={{ marginRight: 1 }} />
-                    Updates
-                  </Typography>
-                  <Box>
-                    {/* Upcoming Events */}
-                    <Typography variant="h6" sx={{ fontWeight: 'bold', marginTop: 2 }}>
-                      Upcoming Events
+                  <Paper
+                    elevation={3}
+                    sx={{
+                      padding: 3,
+                      backgroundColor: '#FFF8E1', // Light cream background
+                      borderRadius: 2,
+                      textAlign: 'center',
+                    }}
+                  >
+                    <Typography variant="h5" gutterBottom sx={{ color: '#6D4C41', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <AnnouncementIcon sx={{ marginRight: 1 }} />
+                      Updates
                     </Typography>
-                    {upcomingEvents.map((event) => (
-                      <Box key={event.id} sx={{ marginBottom: 2 }}>
-                        <Paper
-                          elevation={2}
-                          sx={{
-                            padding: 2,
-                            borderRadius: 1,
-                            backgroundColor: '#FFF9C4', // Light yellow background
-                            cursor: 'pointer',
-                            textAlign: 'left',
-                          }}
-                        >
-                          <Typography variant="h6" sx={{ fontWeight: 'bold', display: 'flex', alignItems: 'center' }}>
-                            <EventIcon sx={{ marginRight: 1 }} />
-                            {event.title}
-                            <IconButton
-                              sx={{ marginLeft: 'auto' }}
-                              onClick={() => handleToggleEvent(event.id)}
-                            >
-                              {openEvent === event.id ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-                            </IconButton>
-                          </Typography>
-                          <Typography variant="body2" color="textSecondary">
-                            {event.date}
-                          </Typography>
-                          <Collapse in={openEvent === event.id}>
-                            <Typography variant="body2" sx={{ marginTop: 1 }}>
-                              {event.details}
+                    <Box>
+                      {/* Upcoming Events */}
+                      <Typography variant="h6" sx={{ fontWeight: 'bold', marginTop: 2 }}>
+                        Upcoming Events
+                      </Typography>
+                      {upcomingEvents.map((event) => (
+                        <Box key={event.id} sx={{ marginBottom: 2 }}>
+                          <Paper
+                            elevation={2}
+                            sx={{
+                              padding: 2,
+                              borderRadius: 1,
+                              backgroundColor: '#FFF9C4', // Light yellow background
+                              cursor: 'pointer',
+                              textAlign: 'left',
+                            }}
+                          >
+                            <Typography variant="h6" sx={{ fontWeight: 'bold', display: 'flex', alignItems: 'center' }}>
+                              <EventIcon sx={{ marginRight: 1 }} />
+                              {event.title}
+                              <IconButton
+                                sx={{ marginLeft: 'auto' }}
+                                onClick={() => handleToggleEvent(event.id)}
+                              >
+                                {openEvent === event.id ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+                              </IconButton>
                             </Typography>
-                          </Collapse>
-                        </Paper>
-                      </Box>
-                    ))}
+                            <Typography variant="body2" color="textSecondary">
+                              {event.date}
+                            </Typography>
+                            <Collapse in={openEvent === event.id}>
+                              <Typography variant="body2" sx={{ marginTop: 1 }}>
+                                {event.details}
+                              </Typography>
+                            </Collapse>
+                          </Paper>
+                        </Box>
+                      ))}
 
-                    
-                
-                  </Box>
-                </Paper>
+                      {/* Important Announcements */}
+                      <Typography variant="h6" sx={{ fontWeight: 'bold', marginTop: 4 }}>
+                        Important Announcements
+                      </Typography>
+                      {importantAnnouncements.map((announcement) => (
+                        <Box key={announcement.id} sx={{ marginBottom: 2 }}>
+                          <Paper
+                            elevation={2}
+                            sx={{
+                              padding: 2,
+                              borderRadius: 1,
+                              backgroundColor: '#FFE0B2', // Light orange background
+                              cursor: 'pointer',
+                              textAlign: 'left',
+                            }}
+                          >
+                            <Typography variant="h6" sx={{ fontWeight: 'bold', display: 'flex', alignItems: 'center' }}>
+                              <AnnouncementIcon sx={{ marginRight: 1 }} />
+                              {announcement.title}
+                              <IconButton
+                                sx={{ marginLeft: 'auto' }}
+                                onClick={() => handleToggleAnnouncement(announcement.id)}
+                              >
+                                {openAnnouncement === announcement.id ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+                              </IconButton>
+                            </Typography>
+                            <Typography variant="body2" color="textSecondary">
+                              {announcement.date}
+                            </Typography>
+                            <Collapse in={openAnnouncement === announcement.id}>
+                              <Typography variant="body2" sx={{ marginTop: 1 }}>
+                                {announcement.details}
+                              </Typography>
+                            </Collapse>
+                          </Paper>
+                        </Box>
+                      ))}
+                    </Box>
+                  </Paper>
+                </motion.div>
               </Grid>
             </Grid>
           </Container>
@@ -217,38 +265,3 @@ const Home = () => {
 };
 
 export default Home;
-// {/* Important Announcements */}
-// <Typography variant="h6" sx={{ fontWeight: 'bold', marginTop: 4 }}>
-// Important Announcements
-// </Typography>
-// {importantAnnouncements.map((announcement) => (
-// <Box key={announcement.id} sx={{ marginBottom: 2 }}>
-//   <Paper
-//     elevation={2}
-//     sx={{
-//       padding: 2,
-//       borderRadius: 1,
-//       backgroundColor: '#FFE0B2', // Light orange background
-//       cursor: 'pointer',
-//       textAlign: 'left',
-//     }}
-//   >
-//     <Typography variant="h6" sx={{ fontWeight: 'bold', display: 'flex', alignItems: 'center' }}>
-//       <AnnouncementIcon sx={{ marginRight: 1 }} />
-//       {announcement.title}
-//       <IconButton
-//         sx={{ marginLeft: 'auto' }}
-//         onClick={() => handleToggleAnnouncement(announcement.id)}
-//       >
-//         {openAnnouncement === announcement.id ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-//       </IconButton>
-//     </Typography>
-//     <Typography variant="body2" color="textSecondary">
-//       {announcement.date}
-//     </Typography>
-//     <Collapse in={openAnnouncement === announcement.id}>
-//       <Typography variant="body2" sx={{ marginTop: 1 }}>
-//         {announcement.details}
-//       </Typography>
-//     </Collapse>
-//   </Paper>
