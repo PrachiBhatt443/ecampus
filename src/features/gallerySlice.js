@@ -1,17 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
-
+import sports from '../img/sports_day.jpg'
+import science from '../img/science_exhibition.jpg'
+import cultural from '../img/cultural_fest.jpg'
+import classroom from '../img/classroom.jpg'
+import library from '../img/library.jpg'
+import school_tour from '../img/school_tour.mp4'
+import annual from '../img/annual_function.mp4'
 // Initial state for the gallery
 const initialState = {
   images: [
-    { src: "https://unsplash.it/640?sports", description: "Students participating in various sports events." },
-    { src: "https://unsplash.it/640/?science", description: "Students presenting their science projects." },
-    { src: "https://unsplash.it/640/?culture", description: "Students performing in the cultural fest." },
-    { src: "https://unsplash.it/640/?classroom", description: "A glimpse of our interactive classrooms." },
-    { src: "https://source.unsplash.com/random?blue sky", description: "Students reading and studying in the school library." },
+    { src: sports , description: "Students participating in various sports events." },
+    { src: science, description: "Students presenting their science projects." },
+    { src: cultural , description: "Students performing in the cultural fest." },
+    { src: classroom, description: "A glimpse of our interactive classrooms." },
+    { src: library, description: "Students reading and studying in the school library." },
   ],
   videos: [
-    { src: "https://www.w3schools.com/html/mov_bbb.mp4", description: "Virtual tour of Springdale Public School." },
-    { src: "https://www.w3schools.com/html/movie.mp4", description: "Highlights from the Annual Function 2023." },
+    { src: school_tour, description: "Virtual tour of Springdale Public School." },
+    { src: annual, description: "Highlights from the Annual Function 2023." },
   ],
 };
 
