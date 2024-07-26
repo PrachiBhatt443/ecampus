@@ -42,8 +42,6 @@ yarn build
 
 This will generate a build directory with all the static files needed for deployment.
 
-# Springdale Public School Website
-
 ## Folder Structure
 
 Here's an overview of the folder structure:
