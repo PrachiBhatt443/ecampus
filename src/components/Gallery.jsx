@@ -1,4 +1,3 @@
-// src/pages/Gallery.js
 import React, { useState } from 'react';
 import { Container, Grid, Typography, Card, CardMedia, CardContent, Box, Select, MenuItem, styled } from '@mui/material';
 import { useSelector } from 'react-redux';
@@ -31,13 +30,11 @@ const Gallery = () => {
 
   return (
     <Container sx={{ marginTop: 8 }}>
-      
-
       {/* Filter Dropdown */}
-      <Box sx={{ marginBottom: 4, textAlign: 'center',display:'flex',alignItems:'center',justifyContent:'center',gap:6 }}>
-      <Typography variant="h2" gutterBottom align="center" sx={{ marginTop: 2 }}>
-        Gallery
-      </Typography>
+      <Box sx={{ marginBottom: 4, textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
+        <Typography variant="h2" gutterBottom align="center" sx={{ marginTop: 2 }}>
+          Gallery
+        </Typography>
         <Select
           value={filter}
           onChange={handleFilterChange}
