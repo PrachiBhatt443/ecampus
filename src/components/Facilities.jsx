@@ -1,4 +1,3 @@
-// src/pages/Facilities.js
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { selectSchool } from '../features/schoolSlice';
@@ -11,11 +10,11 @@ const FacilityList = styled(Paper)(({ theme }) => ({
   borderRadius: theme.shape.borderRadius * 2,
   boxShadow: theme.shadows[1],
   cursor: 'pointer',
-  marginBottom:'15px',
+  marginBottom: '15px',
   transition: 'background-color 0.3s ease',
-  backgroundColor: '#fbe9e7', // Light cream
+  backgroundColor: '#fbe9e7',
   '&:hover': {
-    backgroundColor: '#FFCCBC', // Light peach on hover
+    backgroundColor: '#FFCCBC',
   },
 }));
 
@@ -38,31 +37,48 @@ const Facilities = () => {
         setSelectedFacility(school.aboutUs.facilities[nextIndex]);
         return nextIndex;
       });
-    }, 3000); // Change image every 3 seconds
+    }, 3000); 
 
     return () => clearInterval(interval); // Clean up interval on component unmount
   }, [school.aboutUs.facilities]);
 
   return (
-    <Container sx={{ marginTop: 8 }}>
-      <Typography variant="h2" gutterBottom align="center" color="#6D4C41">
+    <Container sx={{ marginTop: 8 }} role="region" aria-labelledby="facilities-title">
+      <Typography 
+        id="facilities-title" 
+        variant="h2" 
+        gutterBottom 
+        align="center" 
+        color="#6D4C41"
+        aria-level="1"
+      >
         Infrastructure and Facilities
       </Typography>
 
       <Grid container spacing={4}>
         {/* Facilities List */}
-        <Grid item xs={12} md={6} >
-          <Box >
+        <Grid item xs={12} md={6}>
+          <Box>
             {school.aboutUs.facilities.map((facility, index) => (
-              <FacilityList 
+              <FacilityList
                 key={index}
+                role="button"
+                tabIndex={0}
                 onClick={() => {
                   setSelectedFacility(facility);
                   setHighlightedIndex(index);
                 }}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter') {
+                    setSelectedFacility(facility);
+                    setHighlightedIndex(index);
+                  }
+                }}
                 sx={{
                   backgroundColor: index === highlightedIndex ? '#FFCCBC' : '#fbe9e7', // Light peach when selected
                 }}
+                aria-selected={index === highlightedIndex}
+                aria-label={`Facility: ${facility.name}`}
               >
                 <Typography variant="h6" color="#6D4C41">
                   {facility.name}
@@ -80,6 +96,7 @@ const Facilities = () => {
               alt={selectedFacility.name}
               image={selectedFacility.image}
               title={selectedFacility.name}
+              sx={{ objectFit: 'cover' }} // Ensures the image covers the container
             />
           </ImageWrapper>
         </Grid>

@@ -69,7 +69,7 @@ const Students = () => {
               <HorizontalCard>
                 <StyledCardMedia
                   component="img"
-                  alt={member.name}
+                  alt={`Image of ${member.name}`}
                   image={`https://source.unsplash.com/600x400/?student`}
                   onError={(e) => e.currentTarget.src = placeholderImage}
                   sx={{ width: 200, height: 200 }}
@@ -110,7 +110,7 @@ const Students = () => {
               <HorizontalCard>
                 <StyledCardMedia
                   component="img"
-                  alt={achievement}
+                  alt={`Image representing ${achievement}`}
                   image={`https://source.unsplash.com/600x400/?trophy`}
                   onError={(e) => e.currentTarget.src = placeholderImage}
                   sx={{ width: 200, height: 200 }}
@@ -149,7 +149,7 @@ const Students = () => {
               <VerticalCard>
                 <StyledCardMedia
                   component="img"
-                  alt={activity}
+                  alt={`Image representing ${activity}`}
                   image={`https://source.unsplash.com/600x400/?${activity.replace(/\s+/g, '')}`}
                   onError={(e) => e.currentTarget.src = placeholderImage}
                   sx={{ width: '100%', height: 200 }}
@@ -188,7 +188,7 @@ const Students = () => {
               <VerticalCard>
                 <StyledCardMedia
                   component="img"
-                  alt={club}
+                  alt={`Image representing ${club}`}
                   image={`https://source.unsplash.com/600x400/?${club.replace(/\s+/g, '')}`}
                   onError={(e) => e.currentTarget.src = placeholderImage}
                   sx={{ width: '100%', height: 200 }}

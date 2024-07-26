@@ -28,7 +28,7 @@ const theme = {
   },
   text: '#004d40', // Dark teal for text
   hover: '#c8e6c9', // Very light mint green for hover effect
-  fontFamily: 'Roboto, sans-serif', // Professional font
+  fontFamily: 'Roboto, sans-serif', 
 };
 
 const Academics = () => {
@@ -58,7 +58,12 @@ const Academics = () => {
             <Paper elevation={3} sx={{ padding: 2, borderRadius: 2, backgroundColor: theme.background }}>
               <List>
                 {academics.curriculum.primary.map((subject, index) => (
-                  <ListItem key={index} sx={{ animation: `${fadeIn} 1s ease-in-out`, ':hover': { backgroundColor: theme.hover }, fontSize: '1.5rem', fontWeight: 'bold', color: theme.text }}>
+                  <ListItem 
+                    key={index}
+                    sx={{ animation: `${fadeIn} 1s ease-in-out`, ':hover': { backgroundColor: theme.hover }, fontSize: '1.5rem', fontWeight: 'bold', color: theme.text }}
+                    role="listitem"
+                    aria-label={`Primary subject: ${subject}`}
+                  >
                     <ListItemIcon>
                       <Book color="primary" />
                     </ListItemIcon>
@@ -78,7 +83,12 @@ const Academics = () => {
             <Paper elevation={3} sx={{ padding: 2, borderRadius: 2, backgroundColor: theme.background }}>
               <List>
                 {academics.curriculum.secondary.map((subject, index) => (
-                  <ListItem key={index} sx={{ animation: `${fadeIn} 1s ease-in-out`, ':hover': { backgroundColor: theme.hover }, fontSize: '1.5rem', fontWeight: 'bold', color: theme.text }}>
+                  <ListItem 
+                    key={index}
+                    sx={{ animation: `${fadeIn} 1s ease-in-out`, ':hover': { backgroundColor: theme.hover }, fontSize: '1.5rem', fontWeight: 'bold', color: theme.text }}
+                    role="listitem"
+                    aria-label={`Secondary subject: ${subject}`}
+                  >
                     <ListItemIcon>
                       <Book color="primary" />
                     </ListItemIcon>
@@ -105,7 +115,12 @@ const Academics = () => {
                 <Paper elevation={3} sx={{ padding: 2, borderRadius: 2, backgroundColor: theme.background }}>
                   <List>
                     {academics.curriculum.seniorSecondary.science.map((subject, index) => (
-                      <ListItem key={index} sx={{ animation: `${fadeIn} 1s ease-in-out`, ':hover': { backgroundColor: theme.hover }, fontSize: '1.5rem', fontWeight: 'bold', color: theme.text }}>
+                      <ListItem 
+                        key={index}
+                        sx={{ animation: `${fadeIn} 1s ease-in-out`, ':hover': { backgroundColor: theme.hover }, fontSize: '1.5rem', fontWeight: 'bold', color: theme.text }}
+                        role="listitem"
+                        aria-label={`Senior Secondary Science subject: ${subject}`}
+                      >
                         {subject}
                       </ListItem>
                     ))}
@@ -123,7 +138,12 @@ const Academics = () => {
                 <Paper elevation={3} sx={{ padding: 2, borderRadius: 2, backgroundColor: theme.background }}>
                   <List>
                     {academics.curriculum.seniorSecondary.commerce.map((subject, index) => (
-                      <ListItem key={index} sx={{ animation: `${fadeIn} 1s ease-in-out`, ':hover': { backgroundColor: theme.hover }, fontSize: '1.5rem', fontWeight: 'bold', color: theme.text }}>
+                      <ListItem 
+                        key={index}
+                        sx={{ animation: `${fadeIn} 1s ease-in-out`, ':hover': { backgroundColor: theme.hover }, fontSize: '1.5rem', fontWeight: 'bold', color: theme.text }}
+                        role="listitem"
+                        aria-label={`Senior Secondary Commerce subject: ${subject}`}
+                      >
                         {subject}
                       </ListItem>
                     ))}
@@ -138,7 +158,7 @@ const Academics = () => {
           <Typography variant="h4" gutterBottom sx={{ fontSize: '1.8rem', fontWeight: 'bold', color: theme.text }}>
             Methodologies
           </Typography>
-          <Paper elevation={3} sx={{ padding: 2, marginBottom: 2,display:'flex',alignItems:'center', borderRadius: 2, backgroundColor: theme.background, textAlign: 'center' }}>
+          <Paper elevation={3} sx={{ padding: 2, marginBottom: 2, display: 'flex', alignItems: 'center', borderRadius: 2, backgroundColor: theme.background, textAlign: 'center' }}>
             <img src="https://via.placeholder.com/350x250/" alt="Methodologies" style={{ marginBottom: '1rem', borderRadius: '8px' }} />
             <Typography variant="body1" sx={{ fontSize: '1.5rem', fontWeight: 'bold', color: theme.text }}>{academics.methodologies}</Typography>
           </Paper>
@@ -146,10 +166,9 @@ const Academics = () => {
           <Typography variant="h4" gutterBottom sx={{ fontSize: '1.8rem', fontWeight: 'bold', color: theme.text }}>
             Resources
           </Typography>
-          <Paper elevation={3} sx={{ padding: 2,display:'flex',alignItems:'center', marginBottom: 2, borderRadius: 2, backgroundColor: theme.background, textAlign: 'center' }}>
+          <Paper elevation={3} sx={{ padding: 2, display: 'flex', alignItems: 'center', marginBottom: 2, borderRadius: 2, backgroundColor: theme.background, textAlign: 'center' }}>
             <img src="https://via.placeholder.com/350x250/" alt="Resources" style={{ marginBottom: '1rem', borderRadius: '8px' }} />
-            <Typography variant="body1" sx={{ fontSize: '1.5rem', fontWeight: 'bold', color: theme.text }}>
-              {academics.resources}</Typography>
+            <Typography variant="body1" sx={{ fontSize: '1.5rem', fontWeight: 'bold', color: theme.text }}>{academics.resources}</Typography>
           </Paper>
         </Box>
       </Box>

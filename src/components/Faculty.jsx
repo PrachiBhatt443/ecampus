@@ -11,8 +11,6 @@ const slideInBottom = {
   visible: { opacity: 1, y: 0 },
 };
 
-
-
 const zoomEffect = {
   rest: { scale: 1 },
   hover: { scale: 1.05 },
@@ -22,9 +20,19 @@ const Faculty = () => {
   const faculty = useSelector(selectSchool).faculty;
 
   return (
-    <Container sx={{ backgroundColor: '#f9fbe7', paddingY: 6, borderRadius: 2 }}>
+    <Container 
+      sx={{ backgroundColor: '#f9fbe7', paddingY: 6, borderRadius: 2 }} 
+      role="region" 
+      aria-labelledby="faculty-title"
+    >
       <Box textAlign="center" marginBottom={4}>
-        <Typography variant="h1" gutterBottom color="#2e7d32">
+        <Typography 
+          id="faculty-title" 
+          variant="h1" 
+          gutterBottom 
+          color="#2e7d32"
+          aria-level="1"
+        >
           Meet Our Faculty
         </Typography>
         <Box>
@@ -35,6 +43,7 @@ const Faculty = () => {
               animate="visible"
               variants={slideInBottom}
               transition={{ duration: 1, delay: index * 0.2 }}
+              aria-labelledby={`faculty-member-${index}`}
             >
               <motion.div
                 whileHover="hover"
@@ -55,14 +64,25 @@ const Faculty = () => {
                       boxShadow: '0px 8px 24px rgba(0, 0, 0, 0.3)',
                     },
                   }}
+                  role="article"
+                  aria-labelledby={`faculty-member-name-${index}`}
                 >
                   <Avatar
                     src={`https://source.unsplash.com/random/100x100?person=${index}`}
                     alt={member.name}
                     sx={{ width: 120, height: 120, marginRight: 3, border: '2px solid #4caf50' }}
+                    role="img"
+                    aria-label={`Photo of ${member.name}`}
                   />
                   <Box>
-                    <Typography variant="h5" color="#388e3c">{member.name}</Typography>
+                    <Typography 
+                      id={`faculty-member-name-${index}`} 
+                      variant="h5" 
+                      color="#388e3c"
+                      aria-level="2"
+                    >
+                      {member.name}
+                    </Typography>
                     <Typography variant="subtitle1" color="#555">
                       <Person color="action" /> {member.position}
                     </Typography>

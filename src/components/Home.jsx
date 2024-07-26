@@ -3,7 +3,7 @@ import { Element } from 'react-scroll';
 import { Container, Grid, Typography, Paper, Button, Box, Collapse, IconButton } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { selectSchool } from '../features/schoolSlice';
-import bg from '../img/bg.jpg'; // Ensure the image path is correct
+import bg from '../img/bg.jpg'; 
 import CarouselComponent from './CarouselComponent';
 import ContactUs from './ContactUs';
 import EventIcon from '@mui/icons-material/Event';
@@ -12,23 +12,24 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { motion } from 'framer-motion';
 import { keyframes } from '@emotion/react';
+
 const flashingAnimation = keyframes`
   0% { background-color: #FF5722; }   // Bright orange
   50% { background-color: #FFC107; }  // Amber
   100% { background-color: #FF5722; } // Bright orange
 `;
+
 const Home = () => {
-  
   const { schoolName, introduction, upcomingEvents, importantAnnouncements, aboutUs } = useSelector(selectSchool);
   const [openEvent, setOpenEvent] = useState(null);
   const [openAnnouncement, setOpenAnnouncement] = useState(null);
 
   const handleToggleEvent = (id) => {
-    setOpenEvent(openEvent === id ? null : id);
+    setOpenEvent((prev) => (prev === id ? null : id));
   };
 
   const handleToggleAnnouncement = (id) => {
-    setOpenAnnouncement(openAnnouncement === id ? null : id);
+    setOpenAnnouncement((prev) => (prev === id ? null : id));
   };
 
   return (
@@ -42,7 +43,7 @@ const Home = () => {
             backgroundPosition: 'center',
             minHeight: '100vh',
             paddingTop: 8,
-            backgroundColor: '#f1f1f1', // Light background color
+            backgroundColor: '#f1f1f1',
           }}
         >
           <motion.div
@@ -53,11 +54,9 @@ const Home = () => {
             <Paper
               elevation={6}
               sx={{
-                backgroundColor: 'rgba(255, 255, 255, 0.9)', // Light white with slight transparency
+                backgroundColor: 'rgba(255, 255, 255, 0.9)',
                 marginTop: 4,
                 textAlign: 'center',
-                alignItems: 'center',
-                justifyContent: 'center',
                 borderRadius: 2,
                 padding: 3,
               }}
@@ -66,10 +65,9 @@ const Home = () => {
                 variant="h2"
                 gutterBottom
                 sx={{
-                  fontSize: '4rem', // Increased text size
+                  fontSize: '4rem',
                   fontWeight: 'bold',
-                  color: 'transparent',
-                  background: 'linear-gradient(45deg, #6D4C41 30%, #8D6E63 90%)', // Warm gradient
+                  background: 'linear-gradient(45deg, #6D4C41 30%, #8D6E63 90%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   display: 'inline-block',
@@ -80,10 +78,10 @@ const Home = () => {
               <Typography
                 variant="body1"
                 sx={{
-                  fontSize: '1.5rem', 
+                  fontSize: '1.5rem',
                   fontWeight: 'bold',
-                  color: '#3e2723', 
-                  backgroundColor: "#fbe9e7", 
+                  color: '#3e2723',
+                  backgroundColor: "#fbe9e7",
                   padding: 2,
                   borderRadius: 1,
                 }}
@@ -93,7 +91,6 @@ const Home = () => {
             </Paper>
           </motion.div>
 
-          {/* Carousel with smaller size and relevant images */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -108,11 +105,11 @@ const Home = () => {
             <Button
               variant="contained"
               sx={{
-                backgroundColor: '#6D4C41', 
+                backgroundColor: '#6D4C41',
                 color: '#ffffff',
-                animation: `${flashingAnimation} 1.5s infinite`, // Apply flashing effect
+                animation: `${flashingAnimation} 1.5s infinite`,
                 '&:hover': {
-                  backgroundColor: '#5d4037', // Slightly darker shade on hover
+                  backgroundColor: '#5d4037',
                 },
               }}
               href="/gallery"
@@ -121,10 +118,8 @@ const Home = () => {
             </Button>
           </Container>
 
-          {/* Latest Updates Section */}
           <Container sx={{ marginTop: 8, padding: 4, backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: 2 }}>
             <Grid container spacing={4}>
-              {/* About Us Brief */}
               <Grid item xs={12} md={6}>
                 <motion.div
                   initial={{ opacity: 0, x: -50 }}
@@ -135,7 +130,7 @@ const Home = () => {
                     elevation={3}
                     sx={{
                       padding: 3,
-                      backgroundColor: 'rgba(255, 248, 225, 0.5)', 
+                      backgroundColor: 'rgba(255, 248, 225, 0.5)',
                       borderRadius: 2,
                       textAlign: 'center',
                     }}
@@ -159,7 +154,7 @@ const Home = () => {
                     </Typography>
                     <Button
                       variant="contained"
-                      sx={{ backgroundColor: '#6D4C41', color: '#ffffff' }} // Warm color for button
+                      sx={{ backgroundColor: '#6D4C41', color: '#ffffff' }}
                       href="/about"
                     >
                       Know More
@@ -168,7 +163,6 @@ const Home = () => {
                 </motion.div>
               </Grid>
 
-              {/* Upcoming Events & Important Announcements */}
               <Grid item xs={12} md={6}>
                 <motion.div
                   initial={{ opacity: 0, x: 50 }}
@@ -179,7 +173,7 @@ const Home = () => {
                     elevation={3}
                     sx={{
                       padding: 3,
-                      backgroundColor: '#FFF8E1', 
+                      backgroundColor: '#FFF8E1',
                       borderRadius: 2,
                       textAlign: 'center',
                     }}
@@ -200,7 +194,7 @@ const Home = () => {
                             sx={{
                               padding: 2,
                               borderRadius: 1,
-                              backgroundColor: '#FFF9C4', 
+                              backgroundColor: '#FFF9C4',
                               cursor: 'pointer',
                               textAlign: 'left',
                             }}
@@ -227,8 +221,8 @@ const Home = () => {
                         </Box>
                       ))}
 
-                      {/* Important Announcements */}
-                      {/* <Typography variant="h6" sx={{ fontWeight: 'bold', marginTop: 4 }}>
+                      {/* Important Announcements
+                      <Typography variant="h6" sx={{ fontWeight: 'bold', marginTop: 4 }}>
                         Important Announcements
                       </Typography>
                       {importantAnnouncements.map((announcement) => (
@@ -238,7 +232,7 @@ const Home = () => {
                             sx={{
                               padding: 2,
                               borderRadius: 1,
-                              backgroundColor: '#FFE0B2', // Light orange background
+                              backgroundColor: '#FFE0B2',
                               cursor: 'pointer',
                               textAlign: 'left',
                             }}
@@ -270,7 +264,7 @@ const Home = () => {
               </Grid>
             </Grid>
           </Container>
-        </Container>
+          </Container>
       </Element>
       <ContactUs />
     </>
