@@ -1,9 +1,8 @@
-// src/pages/Admissions.js
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectSchool } from '../features/schoolSlice';
 import { Container, Typography, Box, Card, CardContent, List, ListItem, ListItemIcon } from '@mui/material';
-import { Event, Info, CheckCircle, CalendarToday } from '@mui/icons-material';
+import { Event, Info, CheckCircle, CalendarToday, Download } from '@mui/icons-material';
 
 const Admissions = () => {
   const admissions = useSelector(selectSchool).admissions;
@@ -109,6 +108,30 @@ const Admissions = () => {
                 </ListItemIcon>
                 <Typography variant="body1">
                   Results Announcement: {admissions.dates.resultsAnnouncement}
+                </Typography>
+              </ListItem>
+            </List>
+          </CardContent>
+        </Card>
+      </Box>
+
+      {/* Downloadable Forms Section */}
+      <Box sx={{ marginBottom: 4, backgroundColor: '#f4e1e1', padding: 4, borderRadius: 2, boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
+        <Typography variant="h4" gutterBottom>
+          <ListItemIcon>
+            <Download sx={{ color: '#c17d65' }} />
+          </ListItemIcon>
+          Download Admission Forms
+        </Typography>
+        <Card sx={{ backgroundColor: '#fff', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', borderRadius: 2 }}>
+          <CardContent>
+            <List>
+              <ListItem>
+                <ListItemIcon>
+                  <Download sx={{ color: '#c17d65' }} />
+                </ListItemIcon>
+                <Typography variant="body1">
+                  <a href="https://form.jotform.com/242072351364450" target="_blank" rel="noopener noreferrer">Admission Form</a>
                 </Typography>
               </ListItem>
             </List>
