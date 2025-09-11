@@ -56,7 +56,7 @@ const CarouselComponent = () => {
       >
         <div style={{ position: 'relative' }}>
           <img 
-            src="https://unsplash.com/photos/white-concrete-building-near-green-trees-during-daytime-bgQgAKagQB4?auto=format&fit=crop&w=1200&q=80" 
+            src="https://unsplash.com/photos/white-concrete-building-near-green-trees-during-daytime-bgQgAKagQB4" 
             alt="School Building" 
           />
           <Typography 
