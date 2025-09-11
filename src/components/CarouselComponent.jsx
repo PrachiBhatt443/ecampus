@@ -76,7 +76,7 @@ const CarouselComponent = () => {
 
         <div style={{ position: 'relative' }}>
           <img 
-            src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=80" 
+            src="https://plus.unsplash.com/premium_photo-1680807869780-e0876a6f3cd5?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
             alt="Classroom" 
           />
           <Typography 
@@ -96,7 +96,7 @@ const CarouselComponent = () => {
 
         <div style={{ position: 'relative' }}>
           <img 
-            src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1200&q=80" 
+            src="https://images.unsplash.com/photo-1663246544917-9fa8f65b8359?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
             alt="School Events" 
           />
           <Typography 
